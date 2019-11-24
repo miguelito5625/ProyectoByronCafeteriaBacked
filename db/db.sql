@@ -1,0 +1,22 @@
+
+
+CREATE TABLE categoria(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(50) NOT NULL,
+descripcion VARCHAR(100),
+created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+updated_at TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW()
+)
+
+CREATE TABLE platillo (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(50),
+descripcion VARCHAR(200),
+precio DECIMAL(5,2),
+imagen VARCHAR(1024),
+id_categoria INT NOT NULL,
+estado VARCHAR(20),
+created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+updated_at TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+CONSTRAINT fk_platillos_categoria FOREIGN KEY (id_categoria) REFERENCES categoria(id)
+);
